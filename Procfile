@@ -1,1 +1,1 @@
-web: python main.py server.port=${PORT:33500}
+web: python main.py server.port=${PORT:5000} server.host = '0.0.0.0'

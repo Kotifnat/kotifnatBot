@@ -48,10 +48,9 @@ operators = {
 
 def main():
     new_offset = None
-    hour = now.hour
 
     while True:
-
+        hour = now.hour
         last_update = my_bot.get_last_update(new_offset)
 
         if last_update:

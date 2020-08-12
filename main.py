@@ -1,6 +1,6 @@
 import datetime
 import requests
-
+from tzlocal import get_localzone
 
 url = 'https://api.telegram.org/bot1372295846:AAEka6_LQCCEMMCYJ8SQyXXgJGW65xelC-I/'
 
@@ -36,7 +36,8 @@ class MyBot:
 token_api = '1372295846:AAEka6_LQCCEMMCYJ8SQyXXgJGW65xelC-I'
 my_bot = MyBot(token=token_api)
 greetings = ("здравствуй", "ку", "привет")
-now = datetime.datetime.now()
+tz = get_localzone()
+now = datetime.datetime.now(tz)
 
 
 def main():

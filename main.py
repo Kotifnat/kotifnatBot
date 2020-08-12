@@ -64,14 +64,17 @@ def main():
 
         if last_chat_text.lower() in greetings and today == now.day and 6 <= hour < 12:
             my_bot.send_message(last_chat_id, f'Доброе утро, {last_chat_name}')
+            new_offset = last_update_id + 1
             # today += 1
 
         elif last_chat_text.lower() in greetings and today == now.day and 12 <= hour < 17:
             my_bot.send_message(last_chat_id, f'Добрый день, {last_chat_name}')
+            new_offset = last_update_id + 1
             # today += 1
 
         elif last_chat_text.lower() in greetings and today == now.day and 17 <= hour < 23:
             my_bot.send_message(last_chat_id, f'Добрый вечер, {last_chat_name}')
+            new_offset = last_update_id + 1
             # today += 1
         else:
             try:
@@ -81,9 +84,11 @@ def main():
                 if operator in operators:
                     result = operators[operator](operand_1, operand_2)
                     my_bot.send_message(last_chat_id, f'{last_chat_text} = {result}')
+                    new_offset = last_update_id + 1
             except ValueError:
                 my_bot.send_message(last_chat_id, f'Я Вас не понимаю, {last_chat_name}')
-        new_offset = last_update_id + 1
+                new_offset = last_update_id + 1
+
 
 
 if __name__ == '__main__':

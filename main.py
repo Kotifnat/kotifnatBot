@@ -10,7 +10,7 @@ class BotHandler:
         self.token = token
         self.api_url = "https://api.telegram.org/bot{}/".format(token)
 
-    def get_updates(self, offset=None, timeout=None):
+    def _get_updates(self, offset=None, timeout=None):
         method = 'getUpdates'
         params = {'timeout': timeout, 'offset': offset}
         resp = requests.get(self.api_url + method, params)
@@ -24,7 +24,7 @@ class BotHandler:
         return resp
 
     def get_last_update(self, offset):
-        get_result = self.get_updates(offset)
+        get_result = self._get_updates(offset)
 
         if len(get_result) > 0:
             last_update = get_result[-1]
@@ -37,7 +37,6 @@ class BotHandler:
 token = '1372295846:AAEka6_LQCCEMMCYJ8SQyXXgJGW65xelC-I'
 my_bot = BotHandler(token)
 greetings = ('здравствуй', 'привет', 'ку', 'здорово')
-now = datetime.datetime.now()
 operators = {
     '+': lambda x, y: x + y,
     '-': lambda x, y: x - y,
@@ -50,6 +49,7 @@ def main():
     new_offset = None
 
     while True:
+        now = datetime.datetime.now()
         hour = now.hour
         last_update = my_bot.get_last_update(new_offset)
 

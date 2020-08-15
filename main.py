@@ -2,6 +2,7 @@ import re
 
 import requests
 import datetime
+from tzlocal import get_localzone
 
 
 class BotHandler:
@@ -37,6 +38,7 @@ class BotHandler:
 token = '1372295846:AAEka6_LQCCEMMCYJ8SQyXXgJGW65xelC-I'
 my_bot = BotHandler(token)
 greetings = ('здравствуй', 'привет', 'ку', 'здорово')
+tz = get_localzone()
 operators = {
     '+': lambda x, y: x + y,
     '-': lambda x, y: x - y,
@@ -49,7 +51,7 @@ def main():
     new_offset = None
 
     while True:
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(tz=tz)
         hour = now.hour
         last_update = my_bot.get_last_update(new_offset)
 

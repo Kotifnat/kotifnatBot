@@ -35,7 +35,7 @@ class BotHandler:
         return last_update
 
 
-token = '1372295846:AAEka6_LQCCEMMCYJ8SQyXXgJGW65xelC-I'
+token = '1372295846:AAEwjIghwI2AOupjdZvPIlLsB7y4sdsTQEQ'
 my_bot = BotHandler(token)
 greetings = ('здравствуй', 'привет', 'ку', 'здорово')
 tz = get_localzone()

@@ -4,6 +4,7 @@
 # In[1]:
 
 
+import zipfile
 import random
 import nltk
 from sklearn.linear_model import LogisticRegression
@@ -1147,8 +1148,9 @@ def get_intent(text):
 
 # In[5]:
 
-
-with open('dialogues.txt') as f:
+z = zipfile.ZipFile('dialogues.zip', 'r')
+file = z.extract('dialogues.txt')
+with open(file) as f:
     dialogues_data = f.read()
 dialogues = [dialogue.split('\n')[:2] for dialogue in dialogues_data.split('\n\n')]
 dialogues = [dialogue for dialogue in dialogues if len(dialogue) == 2]

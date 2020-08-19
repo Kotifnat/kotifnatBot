@@ -8,6 +8,7 @@ import random
 import nltk
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # In[2]:
 
@@ -1256,7 +1257,7 @@ go_bot('о чем думаешь?')
 
 # In[11]:
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+
 
 
 def start(update, context):
